@@ -5,9 +5,11 @@ CREATE SCHEMA techshop ;
 
 /*Se crea un usuario para la base de datos llamado "usuario_prueba" y tiene la contraseña "Usuario_Clave."*/
 create user 'usuario_prueba'@'%' identified by 'Usuar1o_Clave.';
+create user 'usuario_reportes'@'%' identified by 'Usuar1o_Reportes.';
 
 /*Se asignan los prvilegios sobr ela base de datos TechShop al usuario creado */
 grant all privileges on techshop.* to 'usuario_prueba'@'%';
+grant select privileges on techshop.* to 'usuario_reportes'@'%';
 flush privileges;
 
 use techshop;
@@ -170,7 +172,8 @@ CREATE TABLE ruta (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-INSERT INTO ruta (patron, rol_name) VALUES ('/producto/nuevo', 'ADMIN'),
+INSERT INTO ruta (patron, rol_name) VALUES 
+('/producto/nuevo', 'ADMIN'),
 ('/producto/guardar', 'ADMIN'),
 ('/producto/modificar/** ', 'ADMIN'),
 ('/producto/eliminar/**', 'ADMIN'),
