@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- Mi primera página html dinámica -->
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -14,7 +15,7 @@
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
-        <header th:fragment="header" class="header fixed-top">     
+        <header th:fragment="header" class="header">     
             <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
                 <div class="container">
                     <a class="navbar-brand" th:href="@{/}">[[#{aplicacion.titulo}]]</a>
