@@ -44,4 +44,25 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
+
+    //Consulta ampliada Método que recupera los productos que estan en un rango de precios.
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consultaAmpliada(double precioInf, double precioSup) {
+        return productoDao.findByPrecioBetweenOrderByPrecioAsc(precioInf, precioSup);
+    }
+
+    //Consulta JPQL Método que recupera los productos que estan en un rango de precios.
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consultaJPQL(double precioInf, double precioSup) {
+        return productoDao.consultaJPQL(precioInf, precioSup);
+    }
+
+    //Consulta SQL Nativa Método que recupera los productos que estan en un rango de precios.
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> consultaSQL(double precioInf, double precioSup) {
+        return productoDao.consultaSQL(precioInf, precioSup);
+    }
 }
