@@ -13,7 +13,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
-                        <button type="button" 
+                        <button type="button"
+                                sec:authorize='hasRole("ROLE_ADMIN")'
                                 class="btn btn-primary btn-block" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#agregarProducto">
@@ -233,7 +234,7 @@
                                                 <th>[[#{producto.categoria}]]</th>
                                                 <th>[[#{producto.activo}]]</th>
                                                 <th>[[#{producto.imagen}]]</th>
-                                                <th></th>
+                                                <th sec:authorize='hasRole("ROLE_ADMIN")'></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -247,7 +248,7 @@
 
                                                 <td th:text="${c.activo} ? 'Activa' : 'Inactiva'"></td>
                                                 <td><img th:src="@{${c.rutaImagen}}" height="75"/></td>
-                                                <td>
+                                                <td sec:authorize='hasRole("ROLE_ADMIN")'>
                                                     <a class="btn btn-danger"
                                                        th:href="@{/producto/eliminar/}+${c.idProducto}">
                                                         <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a> 
